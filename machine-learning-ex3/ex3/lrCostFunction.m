@@ -76,6 +76,8 @@ grad = grad + lambda/m*temp;
 %   grad(i,1) = 1/m*sum(errors_xi) + lambda/m*theta(i,1);
 % end;
 % =============================================================
+% just for Git test
+
 
 grad = grad(:);
 
