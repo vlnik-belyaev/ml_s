@@ -82,29 +82,23 @@ end
 %
 
 
+Theta1_trimmed = Theta1(:,2:end);
+Theta2_trimmed = Theta2(:,2:end);
+
+J = J + lambda/(2*m)*(sum(sum(Theta1_trimmed.^2,1),2) + sum(sum(Theta2_trimmed.^2,1),2));
+
+Theta1_zero_bias = [zeros(hidden_layer_size,1) Theta1_trimmed];
+Theta2_zero_bias = [zeros(num_labels,1) Theta2_trimmed];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Theta1_grad_regular = (Theta1_grad + lambda*Theta1_zero_bias)/m;
+Theta2_grad_regular = (Theta2_grad + lambda*Theta2_zero_bias)/m;
 % -------------------------------------------------------------
 
 % =========================================================================
 
 % Unroll gradients
-grad = [Theta1_grad(:)/m ; Theta2_grad(:)/m];
-
+%grad = [Theta1_grad(:)/m ; Theta2_grad(:)/m];
+grad = [Theta1_grad_regular(:); Theta2_grad_regular(:)];
 
 end
