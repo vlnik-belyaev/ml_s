@@ -21,11 +21,19 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+dist = zeros(size(X,1),size(centroids,1));
+for i = 1:size(X,1)
+  for j = 1: size(centroids,1)
+    diff_vector = X(i,:) - centroids(j,:);
+    %dist(i,j) = sqrt((X(i,1)-centroids(j,1))^2+(X(i,2)-centroids(j,2))^2);
+    dist(i,j) = sqrt(diff_vector* diff_vector');
+  end
+end
+
+[dist_min, ind_min] = min(dist,[], 2);
 
 
-
-
-
+idx = ind_min;
 
 % =============================================================
 

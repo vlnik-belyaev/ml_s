@@ -27,7 +27,8 @@ end
 % Initialize values
 [m n] = size(X);
 K = size(initial_centroids, 1);
-centroids = initial_centroids;
+%centroids = initial_centroids;
+centroids = kMeansInitCentroids(X, K);
 previous_centroids = centroids;
 idx = zeros(m, 1);
 
